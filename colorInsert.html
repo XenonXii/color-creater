@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="colorInsert.css">
+    <script>
+        function cl(x){
+            console.log(x)
+        }
+        let colors=[]
+      
+        function insert_new_color_palet(){
+            let color=document.getElementById("color_selector").value
+            cl(color)
+            colors.push(`${color}`)
+            
+            // document.getElementById("body").style.backgroundImage=`linear-gradient(to bottom , ${color},white)`
+            const newDiv=document.createElement("div")
+            newDiv.setAttribute("class","DivStyle")
+            newDiv.style.backgroundImage=`linear-gradient(to bottom , ${color},white)`
+            if(colors.length>=2){
+                newDiv.style.marginTop="-20px"
+            }
+
+            document.body.appendChild(newDiv)
+            newDiv.addEventListener("click",function(){
+                let colorList=document.getElementById("list")
+            colorList.value=color
+            document.getElementById("body").style.backgroundImage=`linear-gradient(to bottom , ${color},black)`
+            })
+
+            
+            
+        }
+        // function showcolor(color){
+        //     let colorList=document.getElementById("list")
+        //     colorList.value=color
+        // }
+    </script>
+</head>
+<body id="body">
+    <input type="color" id="color_selector" onchange="insert_new_color_palet()">
+    <input type="text" name="" id="list">
+
+</body>
+</html>
